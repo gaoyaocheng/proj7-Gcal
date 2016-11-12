@@ -92,11 +92,16 @@
   <div class="row">
   {% for cal in g.calendars if cal.selected %}
           <div class="col-md-4">
-	   {{ cal.summary }}
-          </div>
-         {% if loop.index is divisibleby 3 %}
-          </div> <div class="row">
-         {% endif %}
+           {{ cal.summary }}
+           <br/>
+           {% for e in cal.event%}
+           {{e.start}} - {{e.end}} : {{e.summary}}
+           <br/>
+           {%endfor%}
+              </div>
+             {% if loop.index is divisibleby 3 %}
+              </div> <div class="row">
+             {% endif %}
   {% endfor %}
   </div>
 {% endif %}
